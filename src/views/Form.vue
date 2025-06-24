@@ -1,12 +1,13 @@
 <script setup>
 //p.175
-import { reactive } from 'vue';
+import { reactive, onMounted } from 'vue';
 import { HttpService } from '@/services/HttpService';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const httpService = new HttpService();
 
 const router = useRouter();
+const route = useRoute();
 
 const state = reactive({
     memo: {
@@ -20,6 +21,12 @@ const submit = () => {
     alert('저장했습니다.');
     router.push({ path: '/' });
 }
+
+onMounted(()=> {
+    if(route.params.id) {//값이 있다면 item 클릭, 없다면 [+추가하기] 버튼 클릭
+        
+    }
+});
 </script>
 
 <template>

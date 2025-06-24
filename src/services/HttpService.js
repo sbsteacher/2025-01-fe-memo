@@ -11,4 +11,6 @@ export class HttpService {
         const result = await axios.get('http://localhost:8080/memo');        
         return result.data;
     }
+
+    
 }

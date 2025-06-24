@@ -13,6 +13,11 @@ const router = createRouter({
       path: '/memos/add',
       name: 'memoAdd',
       component: () => import('@/views/Form.vue')
+    },
+    {
+      path: '/memos/:id',
+      name: 'memoDetail',
+      component: () => import('@/views/Form.vue')
     }
 
     // {
