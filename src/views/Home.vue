@@ -8,9 +8,21 @@ const state = reactive({
   memos: [],
 });
 
-onMounted(async () => {
-  state.memos = await httpService.getItems();
+onMounted(() => {
+  getItems();
 });
+
+const getItems = async () => {
+  state.memos = await httpService.getItems();
+}
+
+const remove = async id => {
+  console.log('id:', id);
+  const result = await httpService.delItem(id);
+  if(result === '성공') {
+    getItems();
+  }
+}
 </script>
 
 <template>
@@ -21,7 +33,7 @@ onMounted(async () => {
           <div class="d-flex justify-content-between">
             <b>{{ m.title }}</b>
             <div>
-              <span role="button">삭제</span>
+              <span role="button" @click.prevent="remove(m.id)">삭제</span>
             </div>
           </div>
           <div class="mt-2">{{ m.content }}</div>

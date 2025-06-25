@@ -24,5 +24,8 @@ export class HttpService {
              .catch(err => console.log('실패', err));
     }
 
-    
+    async delItem(id) {
+        const result = await axios.delete(`http://localhost:8080/memo?id=${id}`);
+        return result.data;
+    }
 }
